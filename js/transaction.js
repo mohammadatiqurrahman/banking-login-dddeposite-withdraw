@@ -9,8 +9,11 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
     const depositField = document.getElementById('deposite-input');
     const getDepositeAmount = depositField.value;
 
-
-    const setDeposite = document.getElementById('depositte-amount')
+    if(depositField.value == '' || depositField.value <= 0){
+        alert('please enter amount')
+    }
+    else{
+        const setDeposite = document.getElementById('depositte-amount')
 
     // setDeposite.innerText = getDepositeAmount;
     const previousDepositeAmount = setDeposite.innerText;
@@ -32,6 +35,8 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
     currentBalance.innerText = currentTotalBalance;
 
     depositField.value = '';
+    }
+    
 
 
   });
