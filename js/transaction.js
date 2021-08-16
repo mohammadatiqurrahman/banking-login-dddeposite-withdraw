@@ -47,7 +47,7 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
     const withdrawField = document.getElementById('withdraw-input')
     const previousWithdrawAmount = withdrawField.value;
     // convert the new withdrwal amount to parseFloat and reduce from main balance!
-     if(withdrawField.value == '' || withdrawField <= 0){
+     if(withdrawField.value == '' || withdrawField.value <= 0){
          alert('please enter amount')
      }
      else{
