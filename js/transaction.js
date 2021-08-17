@@ -11,6 +11,7 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
 
     if(depositField.value == '' || depositField.value <= 0){
         alert('please enter amount')
+        depositField.value = '';
     }
     else{
         const setDeposite = document.getElementById('depositte-amount')
@@ -47,16 +48,25 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
     const withdrawField = document.getElementById('withdraw-input')
     const previousWithdrawAmount = withdrawField.value;
     // convert the new withdrwal amount to parseFloat and reduce from main balance!
+
+    const currentBalance = document.getElementById('balance-amount');
+    const previousBalance = currentBalance.innerText;
+
      if(withdrawField.value == '' || withdrawField.value <= 0){
          alert('please enter amount')
+         withdrawField.value = ''
      }
+     else if(parseFloat(previousBalance) < parseFloat(withdrawField.value)){
+         alert('not enough balance')
+         withdrawField.value = ''
+     }
+
      else{
         const convertedPreviousWithdrawAmount = parseFloat(previousWithdrawAmount);
 
         const previousWithdrwalBalance = document.getElementById('withdraw-amount')
         const newPreviousWithdrwalBalance = previousWithdrwalBalance.innerText;
         const convertedNewPreviousWithdrwalBalance = parseFloat(newPreviousWithdrwalBalance);
-       //  console.log(convertedNewPreviousWithdrwalBalance);
    
         const totalWithdrawlBalance = convertedNewPreviousWithdrwalBalance + convertedPreviousWithdrawAmount;
    
@@ -64,9 +74,9 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
    
    
        // update reduce balance after withdrwal
-       const currentBalance = document.getElementById('balance-amount');
+    //    const currentBalance = document.getElementById('balance-amount');
    
-       const previousBalance = currentBalance.innerText;
+    //    const previousBalance = currentBalance.innerText;
    
        const currentPreviousTotalBalance = parseFloat(previousBalance)-convertedPreviousWithdrawAmount
    
